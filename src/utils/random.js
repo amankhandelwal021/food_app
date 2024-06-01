@@ -12,3 +12,7 @@ export const getRandomOrderNumber = (min = 1000, max = 9999) => {
   const randomOrderNumber = Math.floor(Math.random() * (max - min + 1)) + min;
   return randomOrderNumber;
 }
+ export const getRandomElement = (array) => {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}

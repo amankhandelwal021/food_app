@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { fetchInstance } from "../utils/instance";
 import { Link } from 'react-router-dom';
 import HomeFoodCard from './HomeFoodCard';
+import { getRandomElement } from '../utils/random';
 
-const Categories = () => {
+const Categories = ({setRandomCuisine}) => {
 
   const [foodCategory, setFoodCategory] = useState([]);
   const [cuisines, setCuisines] = useState([]);
-  const [selectedCuisines, setSelectedCuisines] = useState("American")
+  const [selectedCuisines, setSelectedCuisines] = useState("Chinese")
   const [foodItems, setFoodItems] = useState([]);
 
   const getCategory = async () => {
@@ -46,6 +47,12 @@ const Categories = () => {
     getCuisinesByArea()
   }, [selectedCuisines])
 
+  useEffect(() => {
+    const result = getRandomElement(cuisines);
+    if (result) {
+      setRandomCuisine(result.strArea)
+    }
+  }, [cuisines])
 
   return (
     <div className="my-5">
