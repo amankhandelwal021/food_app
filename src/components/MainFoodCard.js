@@ -4,7 +4,7 @@ import { fetchInstance } from '../utils/instance'
 import AddCartButton from './AddCartButton';
 import { FaStar } from "react-icons/fa6";
 
-const MainFoodCard = ({ name, image }) => {
+const MainFoodCard = ({ id,name, image }) => {
 
     const [details, setDetails] = useState({});
 
@@ -51,7 +51,7 @@ const MainFoodCard = ({ name, image }) => {
             </div>
             <div className="flex flex-col items-center w-1/4 -space-y-2">
                 <img src={image} alt="" className='h-36 object-contain rounded-xl' />
-                <AddCartButton />
+                <AddCartButton  id={id} name={name} price={getRandomPrice()} image={image}/>
             </div>
         </div>
     )

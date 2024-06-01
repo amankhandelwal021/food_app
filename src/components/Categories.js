@@ -87,9 +87,9 @@ const Categories = ({setRandomCuisine}) => {
         </div>
       </div>
       <div>
-        <div className="grid grid-cols-4 gap-7 my-7 overflow-scroll no-scrollbar">
+        <div className="grid grid-cols-4 gap-y-5 my-7 overflow-scroll no-scrollbar">
           {foodItems && foodItems.length > 0 ? foodItems.map((food, index) => (
-            <HomeFoodCard name={food.strMeal.slice(0, 15)} image={food.strMealThumb} />
+            <HomeFoodCard id={food.idMeal} name={food.strMeal.slice(0, 15)} image={food.strMealThumb} />
           )) : (
             <p className='whitespace-nowrap'>Fetching Food Items...</p>
           )}

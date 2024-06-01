@@ -5,9 +5,14 @@ import OptionMenu from '../components/OptionMenu';
 import Breadcrumb from '../components/Breadcrumb';
 import Offer from '../components/Offer';
 import CartItem from '../components/CartItem';
+import { selectCartItems } from '../redux/slice/cartSlice';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
   const [active, setActive] = useState(false);
+
+  const items = useSelector((state) => selectCartItems(state))
+  console.log("items", items);
 
   return (
     <div className='flex'>
@@ -17,7 +22,10 @@ const Cart = () => {
         <div className="m-10 space-y-5">
           <Breadcrumb />
           <Offer />
-          <CartItem />
+          {
+            items.map((item, index) => (
+              <CartItem key={index} id={item.id} image={item.image} name={item.name} price={item.price} />))
+          }
         </div>
       </div>
       <div className='w-[30%]'>

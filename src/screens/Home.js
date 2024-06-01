@@ -10,7 +10,7 @@ const Home = () => {
     
     return (
         <div className='flex'>
-            <div className='w-[70%] py-4 px-8 overflow-scroll h-screen no-scrollbar'>
+            <div className='w-[70%] py-4 px-5 overflow-scroll h-screen no-scrollbar'>
                 <Sidebar active={active} setActive={setActive} />
                 <Header active={active} setActive={setActive} />
                 <Categories setRandomCuisine={setRandomCuisine} />
