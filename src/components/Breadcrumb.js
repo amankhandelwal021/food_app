@@ -7,6 +7,8 @@ const Breadcrumb = ({ cuisine }) => {
                 <Link to={`/`} className='text-gray-500 hover:cursor-pointer'>Home</Link>
                 <span>/</span>
                 <span className='font-semibold text-gray-700'>{cuisine}</span>
+                <span>/</span>
+                <span className='font-semibold text-gray-700'>Cart</span>
             </div>
     )
 }
