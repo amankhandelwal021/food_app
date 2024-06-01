@@ -43,7 +43,7 @@ const MainFoodCard = ({ name, image }) => {
                 </p>
                 <div className='flex items-center space-x-3'>
                     {details.strTags && details.strTags.split(",").map((tag, index) => (
-                        <button className='flex items-center space-x-5 border-[1px] border-gray-300 w-fit px-5 py-1 rounded-md bg-white'>
+                        <button className='flex items-center space-x-5 border border-[#f9c84f]  w-fit px-5 py-1 rounded-md bg-white'>
                             {tag}
                         </button>
                     ))}

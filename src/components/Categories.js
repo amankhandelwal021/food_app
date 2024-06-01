@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { fetchInstance } from "../utils/instance";
 import { Link } from 'react-router-dom';
+import HomeFoodCard from './HomeFoodCard';
 
 const Categories = () => {
 
@@ -70,7 +71,7 @@ const Categories = () => {
         <p className='font-semibold text-lg whitespace-nowrap'>Popular Cuisines</p>
         <div className='flex items-center space-x-3 overflow-scroll no-scrollbar'>
           {cuisines && cuisines.length > 0 ? cuisines.map((cuisine, index) => (
-            <button className={`px-4 py-1 border-[1px] border-gray-400 rounded-lg hover:opacity-45 ${selectedCuisines === cuisine.strArea && "opacity-45"} duration-300`}
+            <button className={`px-4 py-1  rounded-lg ${selectedCuisines === cuisine.strArea ? "hover:opacity-80 font-medium bg-[#FEC93F] ":" border border-[#f9c84f] "} duration-300`}
               onClick={() => setSelectedCuisines(cuisine.strArea)}
             >{cuisine.strArea}</button>
           )) : (
@@ -79,12 +80,9 @@ const Categories = () => {
         </div>
       </div>
       <div>
-        <div className="grid grid-cols-6 gap-5 my-7 overflow-scroll no-scrollbar">
+        <div className="grid grid-cols-4 gap-7 my-7 overflow-scroll no-scrollbar">
           {foodItems && foodItems.length > 0 ? foodItems.map((food, index) => (
-            <div className='flex flex-col items-center justify-center'>
-              <img src={food.strMealThumb} alt="" srcset="" className={`h-[100px] hover:cursor-pointer hover:opacity-85 duration-300 hover:scale-110 rounded-lg`} />
-              <p className='font-medium'>{food.strMeal.slice(0, 15)}..</p>
-            </div>
+            <HomeFoodCard name={food.strMeal.slice(0, 15)} image={food.strMealThumb} />
           )) : (
             <p className='whitespace-nowrap'>Fetching Food Items...</p>
           )}
