@@ -24,15 +24,16 @@ const Order = () => {
   }, []);
 
   return (
-    <div className='flex'>
+    <div className  ='flex'>
       <div className='w-[70%] py-4 px-8 overflow-scroll h-screen no-scrollbar'>
         <Sidebar active={active} setActive={setActive} />
         <Header active={active} setActive={setActive} />
         <div className="m-10 space-y-5">
           <Breadcrumb cuisine={searchParams.get("cuisines")} />
           <Offer />
+          <p className='font-semibold text-xl'>Recommended ({foodItems.length})</p>
           {foodItems.map((item, index) => (
-          <MainFoodCard name={item.strMeal} image={item.strMealThumb} />
+            <MainFoodCard name={item.strMeal} image={item.strMealThumb} />
           ))}
         </div>
       </div>

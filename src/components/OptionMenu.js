@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Offer from './Offer';
 import { getRandomPrice } from '../utils/random';
+import AddCartButton from './AddCartButton';
 
 const OptionMenu = () => {
 
@@ -61,11 +62,7 @@ const OptionMenu = () => {
                                 <p>{item.strMeal.length > 20 ? `${item.strMeal.slice(0, 20)}...` : item.strMeal}</p>
                                 <p>{item.priceMeal}</p>
                             </div>
-                            <div className='flex items-center space-x-3 border-[1px] border-gray-300 w-fit px-3 py-1 rounded-md text-base'>
-                                <span className='hover:cursor-pointer'>-</span>
-                                <span className=''>1</span>
-                                <span className='hover:cursor-pointer'>+</span>
-                            </div>
+                            <AddCartButton />
                         </div>
                     </div>
                 ))}
