@@ -7,7 +7,6 @@ export const cartSlice = createSlice({
     },
     reducers: {
         addToCart: (state, action) => {
-            console.log("object",action.payload)
             state.items = [...state.items, action.payload]
         },
         removeFromCart: (state, action) => {
@@ -15,10 +14,8 @@ export const cartSlice = createSlice({
                 (item) => item.id === action.payload.id
             );
             if (index >= 0) {
-                // Item already exists in cart, update quantity
                 state.items[index].quantity += 1;
               } else {
-                // New item, add to cart with quantity 1
                 state.items.push({ ...action.payload, quantity: 1 });
               }
             let newBasket = [...state.items];
@@ -29,16 +26,38 @@ export const cartSlice = createSlice({
             }
             state.items = newBasket;
         },
+        emptyCart: (state, action) => {
+          state.items = []
+        }
     },
 })
 
-export const { addToCart, removeFromCart } = cartSlice.actions
+export const { addToCart, removeFromCart, emptyCart } = cartSlice.actions
 export const selectCartItems = (state) => state.cart.items;
+export const selectUniqueCartItems = (state) => {
+    const itemsMap = new Map();
+  
+    state.cart.items.forEach(item => {
+      if (itemsMap.has(item.id)) {
+        itemsMap.get(item.id).quantity += 1;
+      } else {
+        itemsMap.set(item.id, { ...item, quantity: 1 });
+      }
+    });
+  
+    const uniqueItems = Array.from(itemsMap.values());
+    return uniqueItems;
+  };
+  
 
 export const selectCartItemsWithId = (state, id) =>
     state.cart.items.filter((item) => item.id === id);
 
-export const selectCartTotal = (state) =>
-    state.cart.items.reduce((total, item) => (total += item.price), 0);
+export const selectCartTotal = (state) => {
+    return state.cart.items.reduce((total, item) => {
+        const price = parseFloat(item?.price?.replace('$', ''));
+        return total + price;
+    }, 0);
+};
 
 export default cartSlice.reducer

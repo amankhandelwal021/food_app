@@ -4,7 +4,7 @@ import { fetchInstance } from '../utils/instance'
 import AddCartButton from './AddCartButton';
 import { FaStar } from "react-icons/fa6";
 
-const MainFoodCard = ({ id,name, image }) => {
+const MainFoodCard = ({ id, name, image }) => {
 
     const [details, setDetails] = useState({});
 
@@ -24,15 +24,22 @@ const MainFoodCard = ({ id,name, image }) => {
     };
 
     return (
-        <div className="flex items-center bg-white p-5 rounded-lg">
-            <div className='w-3/4 space-y-2'>
-                <p className='font-semibold text-xl'>{name}</p>
-                <p className='font-semibold text-lg'>{getRandomPrice()}</p>
+        <div className="sm:flex items-center bg-white p-5 rounded-lg">
+            <div className='sm:w-3/4 space-y-2'>
+                <div className='flex items-start justify-between'>
+                    <div>
+                        <p className='font-semibold text-xl'>{name}</p>
+                        <p className='font-semibold text-lg'>{getRandomPrice()}</p>
+                    </div>
+                    <div className="flex sm:hidden flex-col items-center w-1/4 -space-y-2">
+                        <img src={image} alt="" className='h-20 sm:h-36 object-contain rounded-xl' />
+                    </div>
+                </div>
                 <div className='text-xs flex justify-start items-center space-x-2 text-green-600'>
                     <p><FaStar /> </p>
                     <span className='font-semibold text-green-700'>{getRandomRating()} <span className='font-normal text-black'>({getRandomOrderNumber()})</span> </span>
                 </div>
-                <p>
+                <p className=''>
                     {isExpanded ? details?.strInstructions : `${details?.strInstructions?.slice(0, 170)}...`}
                     <span
                         onClick={toggleReadMore}
@@ -41,17 +48,20 @@ const MainFoodCard = ({ id,name, image }) => {
                         {isExpanded ? ' Read Less' : ' Read More'}
                     </span>
                 </p>
-                <div className='flex items-center space-x-3'>
+                <div className='flex items-center space-x-3 overflow-scroll no-scrollbar'>
                     {details.strTags && details.strTags.split(",").map((tag, index) => (
                         <button className='flex items-center space-x-5 border border-[#f9c84f]  w-fit px-5 py-1 rounded-md bg-white'>
                             {tag}
                         </button>
                     ))}
+                    <div className='sm:hidden flex'>
+                        <AddCartButton id={id} name={name} price={getRandomPrice()} image={image} />
+                    </div>
                 </div>
             </div>
-            <div className="flex flex-col items-center w-1/4 -space-y-2">
+            <div className="hidden sm:flex flex-col items-center w-1/4 -space-y-2">
                 <img src={image} alt="" className='h-36 object-contain rounded-xl' />
-                <AddCartButton  id={id} name={name} price={getRandomPrice()} image={image}/>
+                <AddCartButton id={id} name={name} price={getRandomPrice()} image={image} />
             </div>
         </div>
     )

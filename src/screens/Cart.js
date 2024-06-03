@@ -5,30 +5,32 @@ import OptionMenu from '../components/OptionMenu';
 import Breadcrumb from '../components/Breadcrumb';
 import Offer from '../components/Offer';
 import CartItem from '../components/CartItem';
-import { selectCartItems } from '../redux/slice/cartSlice';
+import { selectCartItems, selectCartTotal, selectUniqueCartItems } from '../redux/slice/cartSlice';
 import { useSelector } from 'react-redux';
 
 const Cart = () => {
   const [active, setActive] = useState(false);
 
-  const items = useSelector((state) => selectCartItems(state))
-  console.log("items", items);
+  const items = useSelector((state) => selectUniqueCartItems(state));
 
   return (
-    <div className='flex'>
-      <div className='w-[70%] py-4 px-8 overflow-scroll h-screen no-scrollbar'>
+    <div className='xl:flex'>
         <Sidebar active={active} setActive={setActive} />
+      <div className='xl:w-[70%] py-4 px-8 overflow-scroll h-screen no-scrollbar'>
         <Header active={active} setActive={setActive} />
-        <div className="m-10 space-y-5">
+        <div className="mt-5 md:m-10 space-y-5">
           <Breadcrumb />
           <Offer />
-          {
-            items.map((item, index) => (
-              <CartItem key={index} id={item.id} image={item.image} name={item.name} price={item.price} />))
-          }
+          <div className="py-5 space-y-5">
+            {items && items.length > 0 ? items.map((item, index) => (
+              <CartItem key={index} id={item.id} image={item.image} name={item.name} price={item.price} />
+            )) : (
+              <p className='whitespace-nowrap'>No items in the cart...</p>
+            )}
+          </div>
         </div>
       </div>
-      <div className='w-[30%]'>
+      <div className='xl:w-[30%]'>
         <OptionMenu />
       </div>
     </div>

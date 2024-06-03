@@ -6,17 +6,16 @@ import Categories from '../components/Categories';
 
 const Home = () => {
     const [active, setActive] = useState(false);
-    const [randomCuisine, setRandomCuisine] = useState("");
-    
+
     return (
-        <div className='flex'>
-            <div className='w-[70%] py-4 px-5 overflow-scroll h-screen no-scrollbar'>
-                <Sidebar active={active} setActive={setActive} />
+        <div className='xl:flex'>
+            <Sidebar active={active} setActive={setActive} />
+            <div className='xl:w-[70%] py-4 px-5 overflow-scroll h-screen no-scrollbar'>
                 <Header active={active} setActive={setActive} />
-                <Categories setRandomCuisine={setRandomCuisine} />
+                <Categories />
             </div>
-            <div className='w-[30%]'>
-                <OptionMenu cuisine={randomCuisine} />
+            <div className='xl:w-[30%]'>
+                <OptionMenu />
             </div>
         </div>
     )

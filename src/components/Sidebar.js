@@ -46,7 +46,7 @@ const Sidebar = ({ active, setActive }) => {
   ]
 
   return (
-    <div className={`w-[20%] h-screen p-5 space-y-8 fixed ${active ? "left-0" : "-left-80"} duration-300 z-50 bg-white border-[1px] border-r-gray-200`}>
+    <div className={`w-3/4 md:w-1/2 lg:w-[25%] h-screen p-5 space-y-8 fixed ${active ? "left-0" : "-left-80"} duration-300 z-50 bg-white border-[1px] border-r-gray-200`}>
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <MdFastfood className='text-red-600 text-3xl' />
@@ -66,7 +66,7 @@ const Sidebar = ({ active, setActive }) => {
             return (
               <Link
                 key={index}
-                href={tab.route}
+                to={tab.route}
                 className='flex items-center space-x-3 p-4 hover:bg-[#FEC93F] duration-300 rounded-2xl text-lg hover:cursor-pointer text-black'
                 onClick={() => setActive(!active)}
               >
@@ -84,7 +84,7 @@ const Sidebar = ({ active, setActive }) => {
             return (
               <Link
                 key={index}
-                href={tab.route}
+                to={tab.route}
                 className='flex items-center space-x-3 p-4 hover:bg-[#FEC93F] duration-300 rounded-2xl text-lg hover:cursor-pointer text-black'
                 onClick={() => setActive(!active)}
               >

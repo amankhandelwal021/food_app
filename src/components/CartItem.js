@@ -4,8 +4,7 @@ import { getRandomPrice } from "../utils/random";
 
 const CartItem = ({ id, image, name, price }) => {
   return (
-    <div className="">
-      <div className="flex items-start space-x-3 w-full">
+      <div className="sm:flex items-start sm:space-x-3 sm:space-y-0 space-y-3 w-full">
         <img src={image} alt="" className="h-28 w-40 rounded-lg" />
         <div>
           <div>
@@ -24,7 +23,6 @@ const CartItem = ({ id, image, name, price }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
