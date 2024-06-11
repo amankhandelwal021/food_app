@@ -27,9 +27,9 @@ const MainFoodCard = ({ id, name, image }) => {
         <div className="sm:flex items-center bg-white p-5 rounded-lg">
             <div className='sm:w-3/4 space-y-2'>
                 <div className='flex items-start justify-between'>
-                    <div>
-                        <p className='font-semibold text-xl'>{name}</p>
-                        <p className='font-semibold text-lg'>{getRandomPrice()}</p>
+                    <div className='w-3/4'>
+                        <p className='font-semibold text-lg md:text-xl'>{name}</p>
+                        <p className='font-semibold text-base md:text-lg'>{getRandomPrice()}</p>
                     </div>
                     <div className="flex sm:hidden flex-col items-center w-1/4 -space-y-2">
                         <img src={image} alt="" className='h-20 sm:h-36 object-contain rounded-xl' />

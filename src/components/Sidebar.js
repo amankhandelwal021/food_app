@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FaUserCircle } from "react-icons/fa";
 import { MdFastfood } from "react-icons/md";
 import { MdDashboard } from "react-icons/md";
@@ -109,3 +109,4 @@ const Sidebar = ({ active, setActive }) => {
 }
 
 export default Sidebar
+

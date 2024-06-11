@@ -15,7 +15,7 @@ const MyOrder = () => {
   return (
     <div className='flex lg:w-[60%] mx-auto'>
         <Sidebar active={active} setActive={setActive} />
-      <div className='w-full py-4 px-8 overflow-scroll h-screen no-scrollbar'>
+      <div className='w-full py-4 px-5 overflow-scroll h-screen no-scrollbar'>
         <Header active={active} setActive={setActive} />
         <div className="mt-5 md:m-10 space-y-5">
           <Breadcrumb />
